@@ -4,7 +4,7 @@
 
 ##Models
 - Post -> date:date rationtale:text
-- User -> Devise
+x User -> Devise
 - AdminUser -> STI
 
 ##Features
@@ -15,4 +15,4 @@
 - Needs to be documented if employee did not log overtime
 
 ##UI:
-- Bootstrap -> formatting
+ Bootstrap -> formatting
