@@ -18,4 +18,5 @@
  Bootstrap -> formatting
 
  ##Refactor TODOS:
+ - Add a full name method to users
  - Refactor user association integration test in post_spec
