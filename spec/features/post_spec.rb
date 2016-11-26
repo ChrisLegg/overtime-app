@@ -32,6 +32,14 @@ describe 'navigate' do
 
   end
 
+  describe 'new post from nav' do
+    it 'has a link from the homepage to add a new post' do
+      visit root_path
+      click_link("new_post_from_nav")
+      expect(page.status_code).to eq(200)
+    end
+  end
+
   describe 'creation' do
 
     it 'has a new form that can be reached' do
