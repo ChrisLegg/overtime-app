@@ -9,4 +9,5 @@ FactoryGirl.define do
     rationale "Second post rationale"
     user
   end
+
 end
