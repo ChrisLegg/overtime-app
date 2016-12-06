@@ -3,9 +3,14 @@
 require 'rails_helper'
 
 describe 'navigate' do
+  let(:user) { FactoryGirl.create(:user) }
+
+  let(:post) do
+    Post.create(date: Date.today, rationale: "Rationale", user: user)
+  end
+
   before do
-    @user = FactoryGirl.create(:user)
-    login_as(@user, :scope => :user)
+    login_as(user, :scope => :user)
     visit new_post_path
   end
 
@@ -22,15 +27,11 @@ describe 'navigate' do
     end
 
     it 'has a list of posts' do
-      post1 = FactoryGirl.create(:post)
-      post2 = FactoryGirl.create(:second_post)
       visit posts_path
-      expect(page).to have_content(/First|Second/)
+      expect(page).to have_content(/Rationale/)
     end
 
     it 'has a scope so that only post creators can see their posts' do
-      post1 = Post.create(date: Date.today, rationale: "First Post", user: @user)
-      post2 = Post.create(date: Date.today, rationale: "Second Post", user: @user)
       other_user = FactoryGirl.create(:non_authorized_user)
       post_from_other_user = Post.create(date: Date.today, rationale: "Non auth", user: other_user)
       visit posts_path
@@ -48,7 +49,6 @@ describe 'navigate' do
   end
 
   describe 'creation' do
-
     it 'has a new form that can be reached' do
       expect(page.status_code).to eq(200)
     end
@@ -71,13 +71,8 @@ describe 'navigate' do
   end
 
   describe 'edit' do
-    before do
-      @post = Post.create(date: Date.today, rationale: "asdf", user: @user )
-    end
-
     it 'can be edited' do
-      visit edit_post_path(@post)
-      
+      visit edit_post_path(post)
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: 'Edited content'
       click_on "Save"
@@ -88,7 +83,7 @@ describe 'navigate' do
       logout(:user)
       non_auth_user = FactoryGirl.create(:non_authorized_user)
       login_as(non_auth_user, :scope => :user)
-      visit edit_post_path(@post)
+      visit edit_post_path(post)
       expect(current_path).to eq(root_path)
     end
   end
@@ -96,7 +91,7 @@ describe 'navigate' do
   describe 'delete' do
     it 'can be deleted by clicking delete on the index page' do
       @post = FactoryGirl.create(:post)
-      @post.update(user: @user)
+      @post.update(user: user)
       visit posts_path
       click_link("delete_post_#{@post.id}")
       expect(page.status_code).to eq(200)
