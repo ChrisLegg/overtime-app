@@ -15,11 +15,11 @@ ActiveRecord::Schema.define(version: 20161209144435) do
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.date     "date"
     t.text     "rationale",        limit: 65535
-    t.datetime "created_at",                                                null: false
-    t.datetime "updated_at",                                                null: false
+    t.datetime "created_at",                                                             null: false
+    t.datetime "updated_at",                                                             null: false
     t.integer  "user_id"
-    t.integer  "status",                                        default: 0
-    t.decimal  "overtime_request",               precision: 10, default: 0
+    t.integer  "status",                                                 default: 0
+    t.decimal  "overtime_request",               precision: 3, scale: 1, default: "0.0"
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 
