@@ -6,7 +6,7 @@ describe 'navigate' do
   let(:user) { FactoryGirl.create(:user) }
 
   let(:post) do
-    Post.create(date: Date.today, rationale: "Rationale", user: user)
+    Post.create(date: Date.today, rationale: "Rationale", overtime_request: 4.5, user: user)
   end
 
   before do
@@ -49,6 +49,9 @@ describe 'navigate' do
   end
 
   describe 'creation' do
+    before do
+      visit new_post_path
+    end
     it 'has a new form that can be reached' do
       expect(page.status_code).to eq(200)
     end
@@ -56,14 +59,15 @@ describe 'navigate' do
     it 'can be created from new form page' do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: "Some rationale"
-      click_on "Save"
-
-      expect(page).to have_content(/Some rationale/)
+      fill_in 'post[overtime_request]', with: 3.5
+      
+      expect { click_on "Save" }.to change(Post, :count).by(1)
     end
 
     it 'will have a user associated with it' do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: "User Association"
+      fill_in 'post[overtime_request]', with: 3.5
       click_on "Save"
 
       expect(User.last.posts.last.rationale).to eq("User Association")
