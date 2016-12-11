@@ -2,13 +2,15 @@
                     password: "password",
                     password_confirmation: "password",
                     first_name: "Tess",
-                    last_name: "Teecle")
+                    last_name: "Teecle",
+                    phone: "7894687314")
 puts "1 User Created"
 @adminUser = AdminUser.create(email: "admin@example.com",
                          password: "password",
                          password_confirmation: "password",
                          first_name: "Admin",
-                         last_name: "User")
+                         last_name: "User",
+                         phone: "7894687314")
 puts "Admin User Created"
 
 100.times do |post| 

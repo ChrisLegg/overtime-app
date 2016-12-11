@@ -7,6 +7,7 @@ FactoryGirl.define do
     first_name "Jon"
     last_name "Snow"
     email { generate :email }
+    phone "55512345678"
     password "password"
     password_confirmation "password"
   end
@@ -15,6 +16,7 @@ FactoryGirl.define do
     first_name "Admin"
     last_name "User"
     email { generate :email }
+    phone "55512345678"
     password "password"
     password_confirmation "password"
   end
@@ -23,6 +25,7 @@ FactoryGirl.define do
     first_name "Non"
     last_name "Authorized"
     email { generate :email }
+    phone "55512345678"
     password "password"
     password_confirmation "password"
   end
