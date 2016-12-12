@@ -10,7 +10,7 @@
 
 ##Features
 - Approval Workflow
-- SMS Sending -> link to approval or overtime input
+- SMS Sending -> link to approval or overtime input -> integrate with scheduler
 - x Administration admin dashboard
 - x Block non-admin and guest users from admin dashboard
 - Email summary to managers for approval
