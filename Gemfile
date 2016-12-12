@@ -20,7 +20,7 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl'
-  gem 'factory_girl_rails'
+#  g#em 'factory_girl_rails'
 end
 
 group :development do
