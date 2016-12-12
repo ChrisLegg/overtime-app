@@ -98,6 +98,9 @@ GEM
     execjs (2.7.0)
     factory_girl (4.7.0)
       activesupport (>= 3.0.0)
+    factory_girl_rails (4.7.0)
+      factory_girl (~> 4.7.0)
+      railties (>= 3.0.0)
     ffi (1.9.14)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
@@ -253,6 +256,7 @@ DEPENDENCIES
   devise (~> 4.2)
   dotenv-rails
   factory_girl
+  factory_girl_rails
   gritter (~> 1.2)
   jbuilder (~> 2.5)
   jquery-rails

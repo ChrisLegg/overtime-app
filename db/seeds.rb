@@ -19,5 +19,12 @@ puts "Admin User Created"
               user: @user,
               overtime_request: "2.5")
 end
-
 puts "100 posts have been created"
+
+10.times do |audit_log|
+  AuditLog.create(user: @user,
+                  status: 0,
+                  start_date: (Date.today - ((audit_log * 7).days))
+                 )
+end
+puts "10 audit logs have been created"
