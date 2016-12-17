@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="pending-homepage row">
-    <h2>Items pending approval</h2>
+    <h2><%= pluralize(@pending_approvals.count, "Item") %> pending approval</h2>
     <hr />
     <%= render partial: 'pending_approval', locals: { pending_approvals: @pending_approvals } %>
   </div>
