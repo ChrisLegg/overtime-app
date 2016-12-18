@@ -5,7 +5,7 @@
                     last_name: "Teecle",
                     phone: "7894687314")
 puts "1 User Created"
-@adminUser = AdminUser.create(email: "admin@example.com",
+AdminUser = AdminUser.create(email: "admin@example.com",
                          password: "password",
                          password_confirmation: "password",
                          first_name: "Admin",
