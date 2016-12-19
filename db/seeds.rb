@@ -3,14 +3,18 @@
                     password_confirmation: "password",
                     first_name: "Tess",
                     last_name: "Teecle",
-                    phone: "7894687314")
+                    phone: "7894687314",
+                    ssn: 1234,
+                    company: "Employee Ltd")
 puts "1 User Created"
-AdminUser = AdminUser.create(email: "admin@example.com",
+AdminUser.create(email: "admin@example.com",
                          password: "password",
                          password_confirmation: "password",
                          first_name: "Admin",
                          last_name: "User",
-                         phone: "7894687314")
+                         phone: "7894687314",
+                         ssn: 2345,
+                         company: "Adminstrators R US")
 puts "Admin User Created"
 
 10.times do |audit_log|
