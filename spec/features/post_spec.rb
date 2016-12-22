@@ -6,7 +6,7 @@ describe 'navigate' do
   let(:user) { FactoryGirl.create(:user) }
 
   let(:post) do
-    Post.create(date: Date.today, rationale: "Rationale", overtime_request: 4.5, user: user)
+    Post.create(date: Date.today, rationale: "Rationale", daily_hours: 8.5, user: user)
   end
 
   before do
@@ -36,7 +36,7 @@ describe 'navigate' do
       post_from_other_user = Post.create(date: Date.today, 
                                          rationale: "Non auth", 
                                          user: other_user, 
-                                         overtime_request: 3.5)
+                                         daily_hours: 3.5)
       visit posts_path
       expect(page).to_not have_content(/Non auth/)
     end
@@ -69,7 +69,7 @@ describe 'navigate' do
     it 'can be created from new form page' do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: "Some rationale"
-      fill_in 'post[overtime_request]', with: 3.5
+      fill_in 'post[daily_hours]', with: 8.0
       
       expect { click_on "Save" }.to change(Post, :count).by(1)
     end
@@ -77,7 +77,7 @@ describe 'navigate' do
     it 'will have a user associated with it' do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: "User Association"
-      fill_in 'post[overtime_request]', with: 3.5
+      fill_in 'post[daily_hours]', with: 8.0
       click_on "Save"
 
       expect(User.last.posts.last.rationale).to eq("User Association")
