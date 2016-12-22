@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222193359) do
+ActiveRecord::Schema.define(version: 20161222200019) do
 
   create_table "audit_logs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -31,12 +31,12 @@ ActiveRecord::Schema.define(version: 20161222193359) do
 
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.date     "date"
-    t.text     "rationale",   limit: 65535
-    t.datetime "created_at",                                                        null: false
-    t.datetime "updated_at",                                                        null: false
+    t.text     "work_performed", limit: 65535
+    t.datetime "created_at",                                                           null: false
+    t.datetime "updated_at",                                                           null: false
     t.integer  "user_id"
-    t.integer  "status",                                            default: 0
-    t.decimal  "daily_hours",               precision: 3, scale: 1, default: "0.0"
+    t.integer  "status",                                               default: 0
+    t.decimal  "daily_hours",                  precision: 3, scale: 1, default: "0.0"
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 
