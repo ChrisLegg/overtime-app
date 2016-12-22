@@ -27,9 +27,9 @@ describe 'navigate' do
     end
 
     it 'has a list of posts' do
-      Post.create(date: Date.today, work_performed: "abcdef", daily_hours: 8.5, user: user)
+      post
       visit posts_path
-      expect(page).to have_content(/abcdef/)
+      expect(page).to have_text(post.work_performed)
     end
 
     it 'has a scope so that only post creators can see their posts' do
